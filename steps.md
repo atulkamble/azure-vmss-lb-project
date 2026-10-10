@@ -1,4 +1,42 @@
-# Azure VMSS with Public Load Balancer
+// Load Balancer <<< Public/Private 
+0. Create myRG - myVnet 
+1. Create Load Balancer 
+2. Create front-ip 
+3. Create BackEndPool >> add instances 
+4. Create LB-Rule 
+80 front-ip | BackEndPool 80
+5. NAT 
+6. Create LB 
+sudo apt update -y 
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl start apache2
+cd /var/www/html 
+sudo chmod 755 /var/www/html 
+sudo rm index.html 
+sudo nano index.html                            <h1>webserver1</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+// VMSS - instances 
+
+VMSS >> LB 
+
+instances - 3 
+rule - policy 
+
+ 
+ # Azure VMSS with Public Load Balancer
 * Create Resource Group
 * Create Virtual Network and Subnet
 * Create `script.sh`
