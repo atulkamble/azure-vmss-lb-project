@@ -91,3 +91,41 @@ cat /var/log/cloud-init-output.log
 * Health Probe checks VM health
 * Supports Autoscaling
 * Standard Load Balancer recommended for Production
+
+// windows (private LB+VMSS)
+```
+// Private Load Balancer
+1. create RG - myRG
+2. Launch 2 webservers
+server1, server2
+same vnet*
+* SG - http, https, rdp
+3.
+Server Manger >> Add Roles and Features >> IIS (Internet Information Services)
+C:/inetpub/wwwroot/index.html
+4. create loadbalancer - type:internal*
+5. create front-ip
+6. create backend pool - select >> add instances >> add vmss
+7. create rule - front-ip:backendpool 80:80
+8. create health-probe
+9. create load balancer
+10. check url at local and as well as in rdp http://172.16.0.6/
+
+
+VMSS + LB
+
+0.create stotrage account >> mycontainer >> script.ps1
+1. create vmss - myvmss
+2. instance count -
+max - 3
+desired - 2
+min - 1
+3. automatic policy - scale manually - 4 - save | save
+4. vmss >> settings >> add extension >> windows script >> storage account (select script)
+5. vmss restart*
+
+script:
+check file working-script-IIS.ps1
+from
+https://github.com/atulkamble/azure-vmss-lb-project/
+```
